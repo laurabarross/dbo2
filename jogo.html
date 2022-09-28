@@ -8,286 +8,210 @@
     </head>
 	<body>
 		<div class="fundo" id="fundo">
-      <canvas id="game"></canvas>
 		
+		
+		<div id="div2" >
+			
+		</div>
+		<div id="div1">
+	
+		</div>
+		<div class="painel">
+			
+				<hr>
+				<button type="button"  id="para">Parar cursor 1</button>
+				<button type="button"  id="para2" >Parar cursor 2</button><hr>
+				<button type="button"  id="acima" >Acima</button><br>
+				<button type="button"  id="esquerda">Esquerda</button>
+				<button type="button"  id="direita" >Direita</button><br>
+				<button type="button"  id="baixo" >Abaixo</button><hr>
+				<button type="button"  id="alturaMais" >+Altura</button>
+				<button type="button"  id="alturaMenos" >-Altura</button><hr>
+				<button type="button"  id="larguraMais" >+Largura</button>
+				<button type="button"  id="larguraMenos" >-Largura</button><hr>
+				<button type="button"  id="cor">Muda a cor</button>
+				<hr>
+			
+		</div>
 	</div>
-    
 		<script>
-           
-			function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
+            // mover cursor 2 - automático
+			function moverdireita(){
+				let div2Left= parseInt(getComputedStyle(div2).left);
+				let fundoWidth= parseInt(getComputedStyle(fundo).width);
+				let div2Width= parseInt(getComputedStyle(div2).width);
 
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-function generateSequence() {
-  const sequence = ['C', 'J', 'B','M', 'R', 'T', 'BA'];
+				div2.style.left = div2Left +5;
+				if ( div2Left >=  fundoWidth - div2Width){
+					clearInterval(m);
+					m = setInterval ("moveresquerda()",15);
+				}
+			}
+			function moveresquerda(){
+				let div2Left= parseInt(getComputedStyle(div2).left);
+				let fundoWidth= parseInt(getComputedStyle(fundo).width);
+				let div2Width= parseInt(getComputedStyle(div2).width);
 
-  while (sequence.length) {
-    const rand = getRandomInt(0, sequence.length - 1);
-    const name = sequence.splice(rand, 1)[0];
-    tetrominoSequence.push(name);
-  }
-}
+				div2.style.left = div2Left -5;
+				if ( div2Left <= 0){
+					clearInterval(m);
+					m = setInterval ("moverdireita()",15);
+				}
+			}
 
-            
-			function getNextTetromino() {
-  if (tetrominoSequence.length === 0) {
-    generateSequence();
-  }
+            // Mover cursor 1  - através dos botões
+			function move(Direcao) {
+				if (contador != 0) {
+					para();
+				}
+				if (Direcao == "direita") {
+					timer = setInterval("direita()",15);
+					contador ++;
+				}
+
+				if (Direcao == "esquerda") {
+					timer = setInterval("esquerda()",15);
+					contador ++;
+				}
+
+				if (Direcao == "acima") {
+					timer = setInterval("acima()",15);
+					contador ++;
+				}
+
+				if (Direcao == "baixo") {
+					timer = setInterval("baixo()",15);
+					contador ++;
+				}
+			}
 
 
-  const name = tetrominoSequence.pop();
-  const matrix = tetrominos[name];
+            function direita() {
+				let div1Left= parseInt(getComputedStyle(div1).left);
+				let fundoWidth= parseInt(getComputedStyle(fundo).width);
+				let div1Width= parseInt(getComputedStyle(div1).width);
 
- 
-  const col = playfield[0].length / 2 - Math.ceil(matrix[0].length / 2);
+				div1.style.left = div1Left+5;
+				if ( div1Left >= fundoWidth  - div1Width){
+					clearInterval(timer);
+					timer = setInterval ("esquerda()",15);
+				}
+			}
 
- 
-  const row = name === 'I' ? -1 : -2;
+			function esquerda() {
+				let div1Left= parseInt(getComputedStyle(div1).left);
+				
+				div1.style.left = div1Left-5;
+				if ( div1Left <= 0){
+					clearInterval(timer);
+					timer = setInterval ("direita()",15);
+				}
+			}
 
-  return {
-    name: name,      // name of the piece (L, O, etc.)
-    matrix: matrix,  // the current rotation matrix
-    row: row,        // current row (starts offscreen)
-    col: col         // current col
-  };
-}
+			function baixo() {
+				let div1Top= parseInt(getComputedStyle(div1).top);
+				let fundoHeight= parseInt(getComputedStyle(fundo).height);
+				let div1Height= parseInt(getComputedStyle(div1).height);
+
+				div1.style.top = div1Top+5;
+				if(div1Top >= fundoHeight - div1Height){
+					clearInterval(timer);
+				timer = setInterval("acima()",15);
+			    }
+			}
+			function acima() {
+				let div1Top= parseInt(getComputedStyle(div1).top);
+
+				div1.style.top = div1Top-5;
+				if(div1Top <= 0 ){
+				clearInterval(timer);
+				timer = setInterval("baixo()",15);
+				}
+			}
 
             // Parar cursores
-			function rotate(matrix) {
-  const N = matrix.length - 1;
-  const result = matrix.map((row, i) =>
-    row.map((val, j) => matrix[N - j][i])
-  );
+			function para2(){
+				clearInterval(m);
+			}
+			function para() {
+				clearInterval(timer);
+			}
 
-  return result;
-}
-function isValidMove(matrix, cellRow, cellCol) {
-  for (let row = 0; row < matrix.length; row++) {
-    for (let col = 0; col < matrix[row].length; col++) {
-      if (matrix[row][col] && (
-          
-          cellCol + col < 0 ||
-          cellCol + col >= playfield[0].length ||
-          cellRow + row >= playfield.length ||
-          // collides with another piece
-          playfield[cellRow + row][cellCol + col])
-        ) {
-        return false;
-      }
-    }
-  }
+			
 
-  return true;
-}
+			function altura(parametro) {
+				div1.style.height = parseInt(getComputedStyle(div1).height)+parametro;
+			}
 
-function placeTetromino() {
-  for (let row = 0; row < tetromino.matrix.length; row++) {
-    for (let col = 0; col < tetromino.matrix[row].length; col++) {
-      if (tetromino.matrix[row][col]) {
+			function largura(parametro) {
+				div1.style.width = parseInt(getComputedStyle(div1).width)+parametro;
+			}
+			function cor(){
+			if(cont == 0){
+				div1.style.backgroundColor="blue";
+				cont++;
+			}else{
+				if(cont == 1){
+					div1.style.backgroundColor="orange";
+					cont++;
+		   	    }else{
+		   	    if(cont == 2){
+				    div1.style.backgroundColor="yellow";
+				    cont = 0;
+		        	}
+		        }
+		    }
 
-        // se a peça ficar fora da tela fim de jogo
-        if (tetromino.row + row < 0) {
-          return showGameOver();
-        }
+		    }
 
-        playfield[tetromino.row + row][tetromino.col + col] = tetromino.name;
-      }
-    }
-  }
+				function colisao(){
+				let div1Left= parseInt(getComputedStyle(div1).left);
+				let div1Top= parseInt(getComputedStyle(div1).top);
+				let div1Height= parseInt(getComputedStyle(div1).height);
+				let div1Width= parseInt(getComputedStyle(div1).width);
 
-  
-  for (let row = playfield.length - 1; row >= 0; ) {
-    if (playfield[row].every(cell => !!cell)) {
-
-     
-      for (let r = row; r >= 0; r--) {
-        for (let c = 0; c < playfield[r].length; c++) {
-          playfield[r][c] = playfield[r-1][c];
-        }
-      }
-    }
-    else {
-      row--;
-    }
-  }
-
-  tetromino = getNextTetromino();
-}
+				let div2Left= parseInt(getComputedStyle(div2).left);
+				let div2Top= parseInt(getComputedStyle(div2).top);
+				let div2Height= parseInt(getComputedStyle(div2).height);
+				let div2Width= parseInt(getComputedStyle(div2).width);
+				
+				let fundoHeight= parseInt(getComputedStyle(fundo).height);
+				let fundoWidth= parseInt(getComputedStyle(fundo).width);
 
 
-function showGameOver() {
-  cancelAnimationFrame(rAF);
-  gameOver = true;
 
-  context.fillStyle = 'black';
-  context.globalAlpha = 0.75;
-  context.fillRect(0, canvas.height / 2 - 30, canvas.width, 60);
-
-  context.globalAlpha = 1;
-  context.fillStyle = 'white';
-  context.font = '36px monospace';
-  context.textAlign = 'center';
-  context.textBaseline = 'middle';
-  context.fillText('FIM DE JOGO', canvas.width / 2, canvas.height / 2);
-}
-
-const canvas = document.getElementById('game');
-const context = canvas.getContext('2d');
-const grid = 32;
-const tetrominoSequence = [];
+					if (((div1Left >= div2Left)&&(div1Left <= div2Left + div2Width))&&
+						((div1Top >= div2Top)&&(div1Top <= div2Top + div2Height))){
+							para2();
+							para();
+					}
+					if (((div2Left >= div1Left)&&(div2Left <= div1Left + div1Width))&&
+						((div2Top >= div1Top)&&(div2Top <= div1Top + div1Height))){
+							para2();
+							para();
+					}
+				}
 
 
-const playfield = [];
+            //Ao carregar a página estas linhas são executadas. 
+			let contador = 0;
+            let cont = 0;
+	   		let m = setInterval("moverdireita()", 15); //Funções que são chamadas a cada 15 e 5 milisegundos
+			let n = setInterval("colisao()", 5);
+            
+            document.querySelector("#acima").addEventListener("click", ()=>{move('acima')});
+            document.querySelector("#esquerda").addEventListener("click",()=>{ move('esquerda')});
+            document.querySelector("#direita").addEventListener("click",()=>{ move('direita')});
+            document.querySelector("#baixo").addEventListener("click",()=>{ move('baixo')});
+            document.querySelector("#acima").addEventListener("click",()=>{ move('acima')});
+            document.querySelector("#alturaMais").addEventListener("click", ()=>{altura(5)});
+            document.querySelector("#alturaMenos").addEventListener("click", ()=>{altura(-5)});
+            document.querySelector("#larguraMais").addEventListener("click", ()=>{largura(5)});
+            document.querySelector("#larguraMenos").addEventListener("click", ()=>{largura(-5)});
+            document.querySelector("#cor").addEventListener("click", ()=>{cor()});
+            document.querySelector("#para").addEventListener("click",()=>{ para()});
+            document.querySelector("#para2").addEventListener("click", ()=>{para2()});
 
-
-for (let row = -2; row < 20; row++) {
-  playfield[row] = [];
-
-  for (let col = 0; col < 10; col++) {
-    playfield[row][col] = 0;
-  }
-}
-
-
-const tetrominos = {
-  'C': [
-    [0,0,0,0],
-    [1,1,1,1],
-    [0,0,0,0],
-    [0,0,0,0]
-  ],
-  'J': [
-    [1,0,0],
-    [1,1,1],
-    [0,0,0],
-  ],
-  'B': [
-    [0,0,1],
-    [1,1,1],
-    [0,0,0],
-  ],
-  'M': [
-    [1,1],
-    [1,1],
-  ],
-  'R': [
-    [0,1,1],
-    [1,1,0],
-    [0,0,0],
-  ],
-  'T': [
-    [1,1,0],
-    [0,1,1],
-    [0,0,0],
-  ],
-  'BA': [
-    [0,1,0],
-    [1,1,1],
-    [0,0,0],
-  ]
-};
-
-
-const colors = {
-  'C': 'blue',
-  'J': 'cyan',
-  'B': 'red',
-  'M': 'brown',
-  'R': 'purple',
-  'T': 'green',
-  'BA': 'pink'
-};
-
-let count = 0;
-let tetromino = getNextTetromino();
-let rAF = null;  
-let gameOver = false;
-
-
-function loop() {
-  rAF = requestAnimationFrame(loop);
-  context.clearRect(0,0,canvas.width,canvas.height);
-
-
-  for (let row = 0; row < 20; row++) {
-    for (let col = 0; col < 10; col++) {
-      if (playfield[row][col]) {
-        const name = playfield[row][col];
-        context.fillStyle = colors[name];
-
-       
-        context.fillRect(col * grid, row * grid, grid-1, grid-1);
-      }
-    }
-  }
-
-
-  if (tetromino) {
-
-
-    if (++count > 35) {
-      tetromino.row++;
-      count = 0;
-
-      if (!isValidMove(tetromino.matrix, tetromino.row, tetromino.col)) {
-        tetromino.row--;
-        placeTetromino();
-      }
-    }
-
-    context.fillStyle = colors[tetromino.name];
-
-    for (let row = 0; row < tetromino.matrix.length; row++) {
-      for (let col = 0; col < tetromino.matrix[row].length; col++) {
-        if (tetromino.matrix[row][col]) {
-
-
-          context.fillRect((tetromino.col + col) * grid, (tetromino.row + row) * grid, grid-1, grid-1);
-        }
-      }
-    }
-  }
-}
-
-document.addEventListener('keydown', function(e) {
-  if (gameOver) return;
-
-
-  if (e.which === 37 || e.which === 39) {
-    const col = e.which === 37
-      ? tetromino.col - 1
-      : tetromino.col + 1;
-
-    if (isValidMove(tetromino.matrix, tetromino.row, col)) {
-      tetromino.col = col;
-    }
-  }
-
-
-  if (e.which === 38) {
-    const matrix = rotate(tetromino.matrix);
-    if (isValidMove(matrix, tetromino.row, tetromino.col)) {
-      tetromino.matrix = matrix;
-    }
-  }
-
-  if(e.which === 40) {
-    const row = tetromino.row + 1;
-
-    if (!isValidMove(tetromino.matrix, row, tetromino.col)) {
-      tetromino.row = row - 1;
-
-      placeTetromino();
-      return;
-    }
-
-    tetromino.row = row;
-  }
-});
-
-rAF = requestAnimationFrame(loop);
 		</script>
 	</body>
 </html>
