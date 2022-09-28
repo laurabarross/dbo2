@@ -7,7 +7,7 @@
     
     border: 10px solid transparent;
     padding: 5px;
-    border-image: url(img/glitter.jpg) 30 round;
+    border-image: url(..img/glitter.jpg) 30 round;
     text-align: center;
    }
    #game{
