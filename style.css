@@ -1,36 +1,20 @@
 .fundo {
-     position:absolute;
-     top: 0px;
-     left:0px;
-     width: 500px;
-     height: 300px;
-     background-image: url(https://www.coledecore.com.br/wp-content/uploads/2017/11/27-1-510x463.jpg);
-     text-align: center;
-	}
-.painel {
     position: absolute;
-     top: 300px; 
-     left:50px; 
-     width: 400px;
-     height: 741px;
-     text-align: center;
-     border-image:url(glitter.jpg) 30 round;
-}  
-#div2 {
-    position:absolute; 
-    top: 10px; 
-    left: 15px; 
-    width: 50px; 
-    height: 50px; 
-    background-color: rgb(125, 67, 201); 
-    text-align: center;" 
-}
-#div1 {
-    position: absolute;
-    top: 70px;
-    left: 70px; 
-    width: 50px; 
-    height: 50px; 
-    background-color: rgb(77, 150, 233); 
+    top: 5vw;
+    left:5vw;
+    width: 90vw;
+    height: 40vw;
+    
+    border: 10px solid transparent;
+    padding: 5px;
+    border-image: url(img/glitter.jpg) 30 round;
     text-align: center;
-}
+   }
+   #game{
+   position:absolute;
+    top: 5vw;
+    left:5vw;
+    width:90vw;
+    height:40vh;
+    padding: 5px;
+   }
