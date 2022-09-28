@@ -18,3 +18,22 @@
     height:40vh;
     padding: 5px;
    }
+   #div2 {
+   position: absolute; 
+   top: 5vw; 
+   left: 5vw; 
+   width: 75px; 
+   height: 70px; 
+   background-color: green; 
+   text-align: center;
+}
+#div1 {
+   position: absolute;
+   width: 75px;
+   height: 70px;
+   top: 15vw;
+   left: 15vw; 
+   width: 5vw; 
+   height: 5vw; 
+   text-align: center;
+}
