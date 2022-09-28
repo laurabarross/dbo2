@@ -23,17 +23,33 @@
    position: absolute; 
    top: 5vw; 
    left: 5vw; 
-   width: 5vw; 
-   height: 5vh; 
-   background-color: blueviolet;
+   width: 6vw; 
+   height: 8vh;
+   
+   background-image:url(galho.png);
+   background-repeat: no-repeat;
+   background-size: contain;
    text-align: center;
 }
 #div1 {
    position: absolute;
    top: 15vw;
-   left: 15vw; 
-   width: 343px; 
-   height: 200px; 
-   background-image: url(galho.png);
+   left: 0vw; 
+   width: 6vw; 
+   height: 8vh;
+   background-image:url(sininho.png);
+   background-repeat: no-repeat;
+   background-size: contain;
    text-align: center;
 }
+#div3 {
+    position: absolute;
+    top: 15vw;
+    right: 0vw; 
+    width: 340px; 
+    height: 200px;
+    
+    
+    background-image:url(galho2.png);
+    text-align: center;
+ }
