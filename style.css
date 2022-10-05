@@ -1,102 +1,53 @@
 .fundo {
+position: absolute;
+top: 5vw;
+left:5vw;
+width: 90vw;
+height: 40vw;
+background-image:url(img/flor4.jpg);
+text-align: center;
+border: 10px solid transparent;
+padding: 5px;
+border-image: url(img/glitter.jpg) 30 round;
 
-    position: absolute;
-   
- top: 5vw;
- 
-   left:5vw;
- 
-   width: 90vw;
- 
-   height: 40vw;
- 
-   background-image:url(flor4.jpg);
-
-    text-align: center;
-
- 
-   border: 10px solid transparent;
-  
-  padding: 5px;
-   
- border-image: url(glitter.jpg) 30 round;
- 
-   text-align: center;
- 
-  }
-
+ }
 .painel {
- 
-  position: absolute;
- 
-   top: 42vw; 
- 
-   left:10vw; 
-  
-  text-align: center;
-
-
+position: absolute;
+top: 42vw; 
+left:10vw; 
+text-align: center;
 } 
- 
+
 #div2 {
-   
 position: absolute; 
-
-   top: 5vw; 
- 
-  left: 5vw; 
-  
+  top: 5vw; 
+ left: 5vw; 
 width: 15vw; 
+ height: 19vh;
+  background-image:url(img/capg.png);
+background-repeat: no-repeat;
+background-size: contain;
+text-align: center;
+}
 
-  height: 19vh;
-   
-
-   background-image:url(capg.png);
-  
+#div1 {
+ position: absolute;
+  top: 15vw;
+left: 0vw; 
+  width: 15vw; 
+ height: 19vh;
+background-image:url(img/sininho.png);
  background-repeat: no-repeat;
-  
  background-size: contain;
-  
  text-align: center;
 
 }
 
-#div1 {
- 
-  position: absolute;
-
-   top: 15vw;
-  
- left: 0vw; 
-
-   width: 15vw; 
- 
-  height: 19vh;
-  
- background-image:url(sininho.png);
- 
-  background-repeat: no-repeat;
- 
-  background-size: contain;
- 
-  text-align: center;
-
-}
-
 #div3 {
-  
-  position: absolute;
-  
-  top: 15vw;
-   
- right: 0vw; 
-  
-  width: 340px; 
- 
-   height: 200px;
- 
-  background-image:url(galho2.png);
- 
-   text-align: center;
-
- }
+ position: absolute;
+ top: 15vw;
+right: 0vw; 
+ width: 340px;
+  height: 200px;
+  text-align: center;
+}
