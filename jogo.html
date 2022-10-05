@@ -16,7 +16,7 @@
 		<div id="div1">
 	
 		</div>
-        <div id="div3" >
+        <div id="div4" >
 			
 		</div>
 		<div class="painel">
@@ -58,23 +58,23 @@
 			}
 
 			function moverdireita2(){
-				let div3Left= parseInt(getComputedStyle(div3).left);
+				let div4Left= parseInt(getComputedStyle(div4).left);
 				let fundoWidth= parseInt(getComputedStyle(fundo).width);
-				let div3Width= parseInt(getComputedStyle(div3).width);
+				let div4Width= parseInt(getComputedStyle(div4).width);
 
-				div3.style.left = div3Left +5;
-				if ( div3Left >=  fundoWidth - div3Width){
+				div4.style.left = div4Left +5;
+				if ( div4Left >=  fundoWidth - div4Width){
 					clearInterval(g);
 					g = setInterval ("moveresquerda2()",15);
 				}
 			}
 			function moveresquerda2(){
-				let div3Left= parseInt(getComputedStyle(div3).left);
+				let div4Left= parseInt(getComputedStyle(div4).left);
 				let fundoWidth= parseInt(getComputedStyle(fundo).width);
-				let div3Width= parseInt(getComputedStyle(div3).width);
+				let div4Width= parseInt(getComputedStyle(div4).width);
 
-				div3.style.left = div3Left -5;
-				if ( div3Left <= 0){
+				div4.style.left = div4Left -5;
+				if ( div4Left <= 0){
 					clearInterval(g);
                     
 
@@ -134,26 +134,30 @@
 
 			
             function colisao(){
+				//div1 fada
 				let div1Left= parseInt(getComputedStyle(div1).left);
 				let div1Top= parseInt(getComputedStyle(div1).top);
 				let div1Height= parseInt(getComputedStyle(div1).height);
 				let div1Width= parseInt(getComputedStyle(div1).width);
 
+				//div2 obstaculo cima
 				let div2Left= parseInt(getComputedStyle(div2).left);
 				let div2Top= parseInt(getComputedStyle(div2).top);
 				let div2Height= parseInt(getComputedStyle(div2).height);
 				let div2Width= parseInt(getComputedStyle(div2).width);
 
-				let div3Left= parseInt(getComputedStyle(div3).left);
-				let div3Top= parseInt(getComputedStyle(div3).top);
-				let div3Height= parseInt(getComputedStyle(div3).height);
-				let div3Width= parseInt(getComputedStyle(div3).width);
+				//div4 obstaculo baixo
+				let div4Left= parseInt(getComputedStyle(div4).left);
+				let div4Top= parseInt(getComputedStyle(div4).top);
+				let div4Height= parseInt(getComputedStyle(div4).height);
+				let div4Width= parseInt(getComputedStyle(div4).width);
 				
 				let fundoHeight= parseInt(getComputedStyle(fundo).height);
 				let fundoWidth= parseInt(getComputedStyle(fundo).width);
 
 
 
+				//colisao entre fada e obstaculo cima
 
 					if (((div1Left >= div2Left)&&(div1Left <= div2Left + div2Width))&&
 						((div1Top >= div2Top)&&(div1Top <= div2Top + div2Height))){
@@ -165,9 +169,23 @@
 							para2();
 							para();
 					}
+
+					//colisao entre fada e obstaculo baixo
+					if (((div1Left >= div4Left)&&(div1Left <= div4Left + div4Width))&&
+						((div1Top >= div4Top)&&(div1Top <= div4Top + div4Height))){
+							clearInterval(g);
+							para();
+					}
+					if (((div4Left >= div1Left)&&(div4Left <= div1Left + div1Width))&&
+						((div4Top >= div1Top)&&(div4Top <= div1Top + div1Height))){
+							clearInterval(g);
+							para();
+					}
 				}
-
-
+				 
+				
+				
+				
 				function musicafoda() {
 					audioloop.play();
 				}
@@ -176,8 +194,9 @@
 			let contador = 0;
             let cont = 0;
 	   		let m = setInterval("moverdireita()", 15); //Funções que são chamadas a cada 15 e 5 milisegundos
+			let g = setInterval("moverdireita2()", 15);
 			let n = setInterval("colisao()", 5);
-			let timer = setInterval(console.log(),1000);
+			//let timer = setInterval(console.log(),1000);
 
             document.querySelector("#song").addEventListener("click", ()=>{musicafoda()});
             document.querySelector("#acima").addEventListener("click", ()=>{move('acima')});
