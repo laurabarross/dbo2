@@ -10,7 +10,7 @@
  
    height: 40vw;
  
-   background-image:url(img/flor4.jpg);
+   background-image:url(flor4.jpg);
 
     text-align: center;
 
@@ -19,7 +19,7 @@
   
   padding: 5px;
    
- border-image: url(img/glitter.jpg) 30 round;
+ border-image: url(glitter.jpg) 30 round;
  
    text-align: center;
  
@@ -51,7 +51,7 @@ width: 15vw;
   height: 19vh;
    
 
-   background-image:url(img/capg.png);
+   background-image:url(capg.png);
   
  background-repeat: no-repeat;
   
@@ -73,7 +73,7 @@ width: 15vw;
  
   height: 19vh;
   
- background-image:url(img/sininho.png);
+ background-image:url(sininho.png);
  
   background-repeat: no-repeat;
  
@@ -95,7 +95,7 @@ width: 15vw;
  
    height: 200px;
  
-  background-image:url(img/galho2.png);
+  background-image:url(galho2.png);
  
    text-align: center;
 
