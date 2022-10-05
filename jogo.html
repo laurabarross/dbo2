@@ -22,12 +22,15 @@
 		<div class="painel">
 			
 	<button type="button"  id="acima" ><img src="setacima.jpg" alt="cima" width="40vw" height="40vh"></button><br>
-	<button type="button"  id="baixo" ><img src="setabaixo.jpg" alt="baixo" width="40vh" height="40vh"></button>
+	<button type="button"  id="baixo" ><img src="setabaixo.jpg" alt="baixo" width="40vh" height="40vh"></button><br>
+	<button type="button"  id="song"  ><img src="song.png" alt="song" width="40vw" height="40vh"></button>
 
 			
 		</div>
 	</div>
 		<script>
+			var audioloop = new Audio("abertura.mp3");
+
             // mover cursor 2 - automático
 			function moverdireita(){
 				let div2Left= parseInt(getComputedStyle(div2).left);
@@ -165,21 +168,20 @@
 				}
 
 
+				function musicafoda() {
+					audioloop.play();
+				}
+
             //Ao carregar a página estas linhas são executadas. 
 			let contador = 0;
             let cont = 0;
 	   		let m = setInterval("moverdireita()", 15); //Funções que são chamadas a cada 15 e 5 milisegundos
 			let n = setInterval("colisao()", 5);
-            var audioloop = new Audio("pinto/abertura.mp3");
-            
+			let timer = setInterval(console.log(),1000);
+
+            document.querySelector("#song").addEventListener("click", ()=>{musicafoda()});
             document.querySelector("#acima").addEventListener("click", ()=>{move('acima')});
             document.querySelector("#baixo").addEventListener("click",()=>{ move('baixo')});
-            document.querySelector("#cor").addEventListener("click", ()=>{cor()});
-            document.querySelector("#para").addEventListener("click",()=>{ para()});
-            document.querySelector("#para2").addEventListener("click", ()=>{para2()});
-
-            
-            audioloop.play();
 		</script>
 	</body>
 </html>

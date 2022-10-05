@@ -4,11 +4,11 @@ top: 5vw;
 left:5vw;
 width: 90vw;
 height: 40vw;
-background-image:url(img/flor4.jpg);
+background-image:url(flor4.jpg);
 text-align: center;
 border: 10px solid transparent;
 padding: 5px;
-border-image: url(img/glitter.jpg) 30 round;
+border-image: url(glitter.jpg) 30 round;
 
  }
 .painel {
@@ -24,7 +24,7 @@ position: absolute;
  left: 5vw; 
 width: 15vw; 
  height: 19vh;
-  background-image:url(img/capg.png);
+  background-image:url(capg.png);
 background-repeat: no-repeat;
 background-size: contain;
 text-align: center;
@@ -36,7 +36,7 @@ text-align: center;
 left: 0vw; 
   width: 15vw; 
  height: 19vh;
-background-image:url(img/sininho.png);
+background-image:url(sininho.png);
  background-repeat: no-repeat;
  background-size: contain;
  text-align: center;
@@ -51,3 +51,4 @@ right: 0vw;
   height: 200px;
   text-align: center;
 }
+
