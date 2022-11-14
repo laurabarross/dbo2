@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disney</title>
+    <link rel="manifest" href="./manifest.json" />
     <link rel="stylesheet" href="style.css">
+    <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./sw.js')
+             .then(function () {console.log('service worker registered');})
+             .catch(function () {console.log('service worker failed'); });
+        }
+      </script>
     </head>
 	<body>
 		<div class="fundo" id="fundo">
@@ -13,23 +21,32 @@
 		<div id="div2" >
 			
 		</div>
+
 		<div id="div1">
 	
 		</div>
         <div id="div4" >
 			
 		</div>
+
+        <div id="div3">
+
+        </div>
 		<div class="painel">
 			
-	<button type="button"  id="acima" ><img src="img/setacima.jpg" alt="cima" width="40vw" height="40vh"></button><br>
-	<button type="button"  id="baixo" ><img src="img/setabaixo.jpg" alt="baixo" width="40vh" height="40vh"></button><br>
-	<button type="button"  id="song"  ><img src="img/song.png" alt="song" width="40vw" height="40vh"></button>
+	<button type="button"  id="acima" ><img src="setacima.jpg" alt="cima" width="40vw" height="40vh"></button><br>
+	<button type="button"  id="baixo" ><img src="setabaixo.jpg" alt="baixo" width="40vh" height="40vh"></button><br>
+    <button type="button"  id="esq" ><img src="setaesq.jpg" alt="esq" width="40vw" height="40vh"></button><br>
+	<button type="button"  id="dir" ><img src="setadir.jpg" alt="dir" width="40vh" height="40vh"></button><br>
+	<button type="button"  id="song"  ><img src="song.png" alt="song" width="40vw" height="40vh"></button>
 
 			
 		</div>
+        
 	</div>
+    <div id="pont"></div>
 		<script>
-			var audioloop = new Audio("som/abertura.mp3");
+			var audioloop = new Audio("som_abertura.mp3");
 
             // mover cursor 2 - automático
 			function moverdireita(){
@@ -99,6 +116,16 @@
 					contador ++;
                     
 			}
+                if (Direcao == "esq") {
+                    timer = setInterval("esq()",15);
+					contador ++;
+                    
+			}
+                if (Direcao == "dir") {
+                    timer = setInterval("dir()",15);
+					contador ++;
+                    
+			}
         }
 
 			function baixo() {
@@ -121,6 +148,29 @@
 				if(div1Top <= 0 ){
 				clearInterval(timer);
 				timer = setInterval("baixo()",15);
+				}
+			}
+            function esq() {
+				
+                let div1Left= parseInt(getComputedStyle(div1).left);
+				let fundoWidth= parseInt(getComputedStyle(fundo).width);
+				let div1Width= parseInt(getComputedStyle(div1).width);
+				div1.style.left = div1Left-5;
+				if(div1Left <= 0 ){
+				clearInterval(timer);
+				timer = setInterval("dir()",15);
+				}
+			}
+            function dir() {
+				
+                let div1Left= parseInt(getComputedStyle(div1).left);
+				let fundoWidth= parseInt(getComputedStyle(fundo).width);
+				let div1Width= parseInt(getComputedStyle(div1).width);
+                console.log(div1Left >= fundoWidth - div1Width)
+				div1.style.left = div1Left+5;
+				if(div1Left >= fundoWidth - div1Width ){
+				clearInterval(timer);
+				timer = setInterval("esq()",15);
 				}
 			}
             function para2() {
@@ -163,13 +213,14 @@
 						((div1Top >= div2Top)&&(div1Top <= div2Top + div2Height))){
 							para2();
 							para();
-						alert("O Capitão pegou a sininho!! Fim de Jogo");
+                            clearInterval(g);
+						
 					}
 					if (((div2Left >= div1Left)&&(div2Left <= div1Left + div1Width))&&
 						((div2Top >= div1Top)&&(div2Top <= div1Top + div1Height))){
 							para2();
 							para();
-						alert("O Capitão pegou a sininho!! Fim de Jogo");
+                            clearInterval(g);
 					}
 
 					//colisao entre fada e obstaculo baixo
@@ -177,24 +228,56 @@
 						((div1Top >= div4Top)&&(div1Top <= div4Top + div4Height))){
 							clearInterval(g);
 							para();
-						alert("O Capitão pegou a sininho!! Fim de Jogo");
+                            para2();
+						
 					}
 					if (((div4Left >= div1Left)&&(div4Left <= div1Left + div1Width))&&
 						((div4Top >= div1Top)&&(div4Top <= div1Top + div1Height))){
 							clearInterval(g);
 							para();
-						alert("O Capitão pegou a sininho!! Fim de Jogo");
+                            para2();
+						
 					}
 				}
+
+                //colisao brilho
+                
 				 
-				
+                // aparece brilho
+        function criar() {
+            latitude = parseInt(getComputedStyle(fundo).height);
+            longitude = parseInt(getComputedStyle(fundo).width);
+            Novobrilho = document.createElement("div");
+            Novobrilho.setAttribute("id", "div3");
+            fundo.appendChild(Novobrilho);
+            Novobrilho.style.top = Math.floor(Math.random() * latitude);
+            Novobrilho.style.left = Math.floor(Math.random() * longitude);
+            brilhoimg = document.createElement("img");
+            brilhoimg.setAttribute("src", "brilhinho.png")
+            brilhoimg.setAttribute("alt", "brilhinho")
+            Novobrilho.appendChild(brilhoimg);
+            point += 10
+    
+
+
+        }
+
+        
+        function sumir(){
+            fundo.removeChild(div3)
+        }
 				
 				
 				function musicafoda() {
 					audioloop.play();
 				}
 
+
+
             //Ao carregar a página estas linhas são executadas. 
+            
+            let point=0
+            document.querySelector("#pont").innerHTML="pontuação:" + point
 			let contador = 0;
             let cont = 0;
 	   		let m = setInterval("moverdireita()", 15); //Funções que são chamadas a cada 15 e 5 milisegundos
@@ -205,6 +288,9 @@
             document.querySelector("#song").addEventListener("click", ()=>{musicafoda()});
             document.querySelector("#acima").addEventListener("click", ()=>{move('acima')});
             document.querySelector("#baixo").addEventListener("click",()=>{ move('baixo')});
+            document.querySelector("#esq").addEventListener("click",()=>{ move('esq')});
+            document.querySelector("#dir").addEventListener("click",()=>{ move('dir')});
+            
 		</script>
 	</body>
 </html>
