@@ -241,6 +241,18 @@
 				}
 
                 //colisao brilho
+			function colisao() {
+            if (((parseInt(getComputedStyle(div1).left) >= parseInt(getComputedStyle(div3).left)) && (parseInt(getComputedStyle(div1).left) <= parseInt(getComputedStyle(div3).left) + 50)) &&
+                ((parseInt(getComputedStyle(div1).top) >= parseInt(getComputedStyle(div3).top)) && (parseInt(getComputedStyle(div1).top) <= parseInt(getComputedStyle(div3).top) + 50))) {
+                sumir();
+                criar();
+            }
+            if (((parseInt(getComputedStyle(div3).left) >= parseInt(getComputedStyle(div1).left)) && (parseInt(getComputedStyle(div3).left) <= parseInt(getComputedStyle(div1).left) + 50)) &&
+                ((parseInt(getComputedStyle(div3).top) >= parseInt(getComputedStyle(div1).top)) && (parseInt(getComputedStyle(div3).top) <= parseInt(getComputedStyle(div1).top) + 50))) {
+                sumir();
+                criar();
+            }
+        }
                 
 				 
                 // aparece brilho
@@ -262,7 +274,7 @@
 
         }
 
-        
+             //sumir brilho
         function sumir(){
             fundo.removeChild(div3)
         }
