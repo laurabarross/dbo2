@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disney</title>
-    <link rel="manifest" href="./manifest.json" />
+    <link rel="manifest" href="manifest/manifest.json" />
     <link rel="stylesheet" href="style.css">
     <script>
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('./sw.js')
+          navigator.serviceWorker.register('manifest/sw.js')
              .then(function () {console.log('service worker registered');})
              .catch(function () {console.log('service worker failed'); });
         }
@@ -241,7 +241,7 @@
 				}
 
                 //colisao brilho
-			function colisao() {
+			function colisaobrilho() {
             if (((parseInt(getComputedStyle(div1).left) >= parseInt(getComputedStyle(div3).left)) && (parseInt(getComputedStyle(div1).left) <= parseInt(getComputedStyle(div3).left) + 50)) &&
                 ((parseInt(getComputedStyle(div1).top) >= parseInt(getComputedStyle(div3).top)) && (parseInt(getComputedStyle(div1).top) <= parseInt(getComputedStyle(div3).top) + 50))) {
                 sumir();
