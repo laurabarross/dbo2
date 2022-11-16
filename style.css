@@ -63,9 +63,11 @@
         background-image:url(./img/brilhinho.png);
         position: absolute;
          top: 5vw; 
-    left: 5vw; 
-    width: 3vw; 
-    height: 5vw; 
+    left: 50vw; 
+    width: 6vw; 
+    height: 7.5vw; 
         display:none;
+        background-repeat:no-repeat;
+        background-size:contain;
     text-align: center;
     }
