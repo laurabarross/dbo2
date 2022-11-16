@@ -39,7 +39,7 @@
 	<button type="button"  id="baixo" ><img src="img/setabaixo.png" alt="baixo" width="40vh" height="40vh"></button>
 	<button type="button"  id="dir" ><img src="img/setadireita.png" alt="dir" width="40vh" height="40vh"></button>
 	<button type="button"  id="song"  ><img src="img/song.png" alt="song" width="40vw" height="40vh"></button><br>
-			
+	<button class="iniciar">Iniciar</button>
 
 			
 		</div>
@@ -211,23 +211,8 @@
 
 
 
-				//colisao entre fada e obstaculo cima
+				//colisao entre fada e obstaculo cimaet m,g,n;
 
-					if (((div1Left >= div2Left)&&(div1Left <= div2Left + div2Width))&&
-						((div1Top >= div2Top)&&(div1Top <= div2Top + div2Height))){
-							para2();
-							para();
-                            clearInterval(g);
-						
-					}
-					if (((div2Left >= div1Left)&&(div2Left <= div1Left + div1Width))&&
-						((div2Top >= div1Top)&&(div2Top <= div1Top + div1Height))){
-							para2();
-							para();
-                            clearInterval(g);
-					}
-
-					//colisao entre fada e obstaculo baixo
 					if (((div1Left >= div4Left)&&(div1Left <= div4Left + div4Width))&&
 						((div1Top >= div4Top)&&(div1Top <= div4Top + div4Height))){
 							clearInterval(g);
@@ -250,13 +235,13 @@
                 ((parseInt(getComputedStyle(div1).top) >= parseInt(getComputedStyle(div3).top)) && (parseInt(getComputedStyle(div1).top) <= parseInt(getComputedStyle(div3).top) + 50))) {
                 sumir();
                 criar();
-		    point += 10
+		    
             }
             if (((parseInt(getComputedStyle(div3).left) >= parseInt(getComputedStyle(div1).left)) && (parseInt(getComputedStyle(div3).left) <= parseInt(getComputedStyle(div1).left) + 50)) &&
                 ((parseInt(getComputedStyle(div3).top) >= parseInt(getComputedStyle(div1).top)) && (parseInt(getComputedStyle(div3).top) <= parseInt(getComputedStyle(div1).top) + 50))) {
                 sumir();
                 criar();
-		    point += 10
+		    
             }
         }
                 
@@ -274,7 +259,7 @@
             brilhoimg.setAttribute("src", "brilhinho.png")
             brilhoimg.setAttribute("alt", "brilhinho")
             Novobrilho.appendChild(brilhoimg);
-            
+            point += 10
     
 
 
@@ -298,16 +283,21 @@
             document.querySelector("#pont").innerHTML="pontuação:" + point
 			let contador = 0;
             let cont = 0;
+			function iniciar(){
 	   		 m = setInterval("moverdireita()", 15); //Funções que são chamadas a cada 15 e 5 milisegundos
-			g = setInterval("moverdireita2()", 15);
-			let n = setInterval("colisao()", 5);
+			 g = setInterval("moverdireita2()", 15);
+			 n = setInterval("colisao()", 5);
 			//let timer = setInterval(console.log(),1000);
+			}
+			let m,g,n;
 
             document.querySelector("#song").addEventListener("click", ()=>{musicafoda()});
             document.querySelector("#acima").addEventListener("click", ()=>{move('acima')});
             document.querySelector("#baixo").addEventListener("click",()=>{ move('baixo')});
             document.querySelector("#esq").addEventListener("click",()=>{ move('esq')});
             document.querySelector("#dir").addEventListener("click",()=>{ move('dir')});
+			document.querySelector(".iniciar").addEventListener("click",() =>{iniciar()})
+
             
 		</script>
 	</body>
