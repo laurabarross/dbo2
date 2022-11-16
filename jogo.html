@@ -180,9 +180,11 @@
 			}
             function para2() {
 				clearInterval(m);
+		    		localStorage.setItem("pontuação"+ point)
 			}
 			function para() {
 				clearInterval(timer);
+				localStorage.setItem("pontuação"+ point)
 			}
 
 			
@@ -251,11 +253,13 @@
                 ((parseInt(getComputedStyle(div1).top) >= parseInt(getComputedStyle(div3).top)) && (parseInt(getComputedStyle(div1).top) <= parseInt(getComputedStyle(div3).top) + 50))) {
                 sumir();
                 criar();
+		    point += 10
             }
             if (((parseInt(getComputedStyle(div3).left) >= parseInt(getComputedStyle(div1).left)) && (parseInt(getComputedStyle(div3).left) <= parseInt(getComputedStyle(div1).left) + 50)) &&
                 ((parseInt(getComputedStyle(div3).top) >= parseInt(getComputedStyle(div1).top)) && (parseInt(getComputedStyle(div3).top) <= parseInt(getComputedStyle(div1).top) + 50))) {
                 sumir();
                 criar();
+		    point += 10
             }
         }
                 
@@ -273,7 +277,7 @@
             brilhoimg.setAttribute("src", "brilhinho.png")
             brilhoimg.setAttribute("alt", "brilhinho")
             Novobrilho.appendChild(brilhoimg);
-            point += 10
+            
     
 
 
