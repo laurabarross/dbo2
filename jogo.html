@@ -39,7 +39,7 @@
 	<button type="button"  id="baixo" ><img src="img/setabaixo.png" alt="baixo" width="40vh" height="40vh"></button>
 	<button type="button"  id="dir" ><img src="img/setadireita.png" alt="dir" width="40vh" height="40vh"></button>
 	<button type="button"  id="song"  ><img src="img/song.png" alt="song" width="40vw" height="40vh"></button><br>
-			<button type="button"  id="inicio"><img src="img/song.png"></button>
+			
 
 			
 		</div>
@@ -47,10 +47,7 @@
 	</div>
     <div id="pont"></div>
 		<script>
-			function iniciar(){
-				 m = setInterval("moverdireita()", 15); //Funções que são chamadas a cada 15 e 5 milisegundos
-			g = setInterval("moverdireita2()", 15);
-			}
+			
 			var audioloop = new Audio("som/abertura.mp3");
 
             // mover cursor 2 - automático
@@ -301,8 +298,8 @@
             document.querySelector("#pont").innerHTML="pontuação:" + point
 			let contador = 0;
             let cont = 0;
-	   		let m = 0;
-			let g = 0;
+	   		 m = setInterval("moverdireita()", 15); //Funções que são chamadas a cada 15 e 5 milisegundos
+			g = setInterval("moverdireita2()", 15);
 			let n = setInterval("colisao()", 5);
 			//let timer = setInterval(console.log(),1000);
 
@@ -311,7 +308,6 @@
             document.querySelector("#baixo").addEventListener("click",()=>{ move('baixo')});
             document.querySelector("#esq").addEventListener("click",()=>{ move('esq')});
             document.querySelector("#dir").addEventListener("click",()=>{ move('dir')});
-	    document.querySelector("#inicio").addEventListener("click",()=>{ iniciar()});
             
 		</script>
 	</body>
