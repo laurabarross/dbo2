@@ -66,5 +66,6 @@
     left: 5vw; 
     width: 3vw; 
     height: 5vw; 
+        display:none;
     text-align: center;
     }
