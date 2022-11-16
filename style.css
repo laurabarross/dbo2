@@ -62,4 +62,9 @@
     #div3{
         background-image:url(img/brilhinho.png);
         position: absolute;
+         top: 5vw; 
+    left: 5vw; 
+    width: 3vw; 
+    height: 5vw; 
+    text-align: center;
     }
