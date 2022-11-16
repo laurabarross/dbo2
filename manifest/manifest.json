@@ -12,69 +12,39 @@
     "orientation": "any",
     "icons": [
         {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
+         "src": "./img/maskable_icon_x192.png",
+         "type": "image/png",
          "sizes": "192x192"
         },
         {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "180x180"
+         "src": "./img/maskable_icon_x128.png",
+         "type": "image/png",
+         "sizes": "128x128"
         },
         {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "152x152"
+         "src": "./img/maskable_icon_x384.png",
+         "type": "image/png",
+         "sizes": "384x384"
         },
         {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "144x144"
+         "src": "./img/maskable_icon_x48.png",
+         "type": "image/png",
+         "sizes": "48x48"
         },
         {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "120x120"
+         "src": "./img/maskable_icon_x512.png",
+         "type": "image/png",
+         "sizes": "512x512"
         },
         {
-        "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "114x114"
-        },
-        {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "96x96"
-        },
-        {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "76x76"
-        },
-        {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
+        "src": "./img/maskable_icon_x72.png",
+         "type": "image/png",
          "sizes": "72x72"
         },
         {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "60x60"
-        },
-        {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "57x57"
-        },
-        {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "32x32"
-        },
-        {
-         "src": "./img/icon.jpg",
-         "type": "image/jpg",
-         "sizes": "16x16"
+         "src": "./img/maskable_icon_x96.png",
+         "type": "image/png",
+         "sizes": "96x96"
         }
        ]
-   }
+   
