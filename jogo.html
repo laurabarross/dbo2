@@ -227,6 +227,20 @@
                             para2();
 						
 					}
+					if (((div1Left >= div2Left)&&(div1Left <= div2Left + div2Width))&&
+						((div1Top >= div2Top)&&(div1Top <= div2Top + div2Height))){
+							clearInterval(g);
+							para();
+                            para2();
+						
+					}
+					if (((div2Left >= div1Left)&&(div2Left <= div1Left + div1Width))&&
+						((div2Top >= div1Top)&&(div2Top <= div1Top + div1Height))){
+							clearInterval(g);
+							para();
+                            para2();
+						
+					}
 				}
 
                 //colisao brilho
@@ -235,13 +249,13 @@
                 ((parseInt(getComputedStyle(div1).top) >= parseInt(getComputedStyle(div3).top)) && (parseInt(getComputedStyle(div1).top) <= parseInt(getComputedStyle(div3).top) + 50))) {
                 sumir();
                 criar();
-		    
+		    point += 10
             }
             if (((parseInt(getComputedStyle(div3).left) >= parseInt(getComputedStyle(div1).left)) && (parseInt(getComputedStyle(div3).left) <= parseInt(getComputedStyle(div1).left) + 50)) &&
                 ((parseInt(getComputedStyle(div3).top) >= parseInt(getComputedStyle(div1).top)) && (parseInt(getComputedStyle(div3).top) <= parseInt(getComputedStyle(div1).top) + 50))) {
                 sumir();
                 criar();
-		    
+		    point += 10
             }
         }
                 
@@ -259,7 +273,7 @@
             brilhoimg.setAttribute("src", "brilhinho.png")
             brilhoimg.setAttribute("alt", "brilhinho")
             Novobrilho.appendChild(brilhoimg);
-            point += 10
+            
     
 
 
