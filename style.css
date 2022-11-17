@@ -25,11 +25,11 @@
     position: absolute; 
       top: 5vw; 
      left: 5vw; 
-    width: 6vw; 
-     height: 7.5vh;
+    width: 2.5%; 
+     height: 10%;
       background-image:url(img/capg.png);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100% 100%;
     text-align: center;
     }
     
@@ -37,11 +37,11 @@
      position: absolute;
       top: 15vw;
     left: 33vw; 
-      width: 10vw; 
+      width: 4%; 
      height: 7.5vh;
     background-image:url(img/sininho.png);
      background-repeat: no-repeat;
-     background-size: contain;
+     background-size: 100% 100%;
      text-align: center;
     
     }
@@ -51,11 +51,11 @@
        position: absolute; 
          top: 25vw; 
         left: 50vw; 
-       width: 6vw; 
-        height: 7.5vh;
+        width: 2.5%; 
+        height: 10%;
          background-image:url(img/capg.png);
        background-repeat: no-repeat;
-       background-size: contain;
+       background-size: 100% 100%;
        text-align: center;
        }
 
@@ -64,10 +64,11 @@
         position: absolute;
          top: 5vw; 
     left: 50vw; 
-    width: 6vw; 
-    height: 7.5vw; 
+    width: 6%; 
+    height: 7.5%; 
         display:block;
         background-repeat:no-repeat;
-        background-size:contain;
+        background-size: 100% 100%;
     text-align: center; 
     }
+
