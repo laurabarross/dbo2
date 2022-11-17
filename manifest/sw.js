@@ -1,7 +1,7 @@
 //constantes utilizadas
 const CACHE_NAME = 'my-site-cache-v1';
 const urlsToCache = [
-  '../jogo.html',
+  './jogo.html',
   './manifest.json'
 ];
 
