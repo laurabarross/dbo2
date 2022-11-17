@@ -4,7 +4,7 @@
     "lang": "pt-br",
     "description": "Walt Disney- Tinkerbell",
     "start_url": "../jogo.html",
-    "scope":"./",
+    "scope":"https://laurabarross.github.io/dbo2/jogo.html",
     "background_color": "green",
     "theme_color": "green",
     "dir": "ltr",
