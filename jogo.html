@@ -249,41 +249,35 @@
 			function colisaobrilho() {
             if (((parseInt(getComputedStyle(div1).left) >= parseInt(getComputedStyle(div3).left)) && (parseInt(getComputedStyle(div1).left) <= parseInt(getComputedStyle(div3).left) + 50)) &&
                 ((parseInt(getComputedStyle(div1).top) >= parseInt(getComputedStyle(div3).top)) && (parseInt(getComputedStyle(div1).top) <= parseInt(getComputedStyle(div3).top) + 50))) {
+					point += 10
+					document.querySelector("#pont").innerHTML="pontuação:" + point
                 sumir();
-                criar();
-		    point += 10
             }
             if (((parseInt(getComputedStyle(div3).left) >= parseInt(getComputedStyle(div1).left)) && (parseInt(getComputedStyle(div3).left) <= parseInt(getComputedStyle(div1).left) + 50)) &&
                 ((parseInt(getComputedStyle(div3).top) >= parseInt(getComputedStyle(div1).top)) && (parseInt(getComputedStyle(div3).top) <= parseInt(getComputedStyle(div1).top) + 50))) {
+					point += 10
+					document.querySelector("#pont").innerHTML="pontuação:" + point
                 sumir();
-                criar();
-		    point += 10
             }
         }
                 
 				 
                 // aparece brilho
         function criar() {
-            latitude = parseInt(getComputedStyle(fundo).height);
-            longitude = parseInt(getComputedStyle(fundo).width);
-            Novobrilho = document.createElement("div");
+			Novobrilho = document.createElement("div");
             Novobrilho.setAttribute("id", "div3");
             fundo.appendChild(Novobrilho);
+			Novobrilho.style.backgroundImage = "url('./img/brilhinho.png')"
+            latitude = parseInt(getComputedStyle(fundo).height) - parseInt(getComputedStyle(div3).height);
+            longitude = parseInt(getComputedStyle(fundo).width) - parseInt(getComputedStyle(div3).width);
             Novobrilho.style.top = Math.floor(Math.random() * latitude);
             Novobrilho.style.left = Math.floor(Math.random() * longitude);
-            brilhoimg = document.createElement("img");
-            brilhoimg.setAttribute("src", "brilhinho.png")
-            brilhoimg.setAttribute("alt", "brilhinho")
-            Novobrilho.appendChild(brilhoimg);
-            
-    
-
-
         }
 
              //sumir brilho
         function sumir(){
             fundo.removeChild(div3)
+			criar();
         }
 				
 				
@@ -303,9 +297,10 @@
 	   		 m = setInterval("moverdireita()", 15); //Funções que são chamadas a cada 15 e 5 milisegundos
 			 g = setInterval("moverdireita2()", 15);
 			 n = setInterval("colisao()", 5);
+			 z = setInterval("colisaobrilho()", 5);
 			//let timer = setInterval(console.log(),1000);
 			}
-			let m,g,n;
+			let m,g,n,z;
 
             document.querySelector("#song").addEventListener("click", ()=>{musicafoda()});
             document.querySelector("#acima").addEventListener("click", ()=>{move('acima')});
