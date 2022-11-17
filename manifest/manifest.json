@@ -3,7 +3,7 @@
     "name": "Sininho",
     "lang": "pt-br",
     "description": "Walt Disney- Tinkerbell",
-    "start_url": "jogo.html",
+    "start_url": "../jogo.html",
     "scope":"./",
     "background_color": "green",
     "theme_color": "green",
