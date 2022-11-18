@@ -42,7 +42,7 @@
 	<button type="button"  id="dir" ><img src="img/setadireita.png" alt="dir" width="40vh" height="40vh"></button>
 	<button type="button"  id="song"  ><img src="img/song.png" alt="song" width="40vw" height="40vh"></button><br>
 	<button class="iniciar">Iniciar</button>
-	<button onclick="myFunction()">Instruções</button>
+	<button class="inst">Instruções</button>
 
 			
 		</div>
@@ -314,6 +314,8 @@
             document.querySelector("#esq").addEventListener("click",()=>{ move('esq')});
             document.querySelector("#dir").addEventListener("click",()=>{ move('dir')});
 			document.querySelector(".iniciar").addEventListener("click",() =>{iniciar()})
+			document.querySelector(".inst").addEventListener("click",() =>{myFunction()})
+			
 
             
 		</script>
